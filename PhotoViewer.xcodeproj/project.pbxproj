@@ -8,18 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		591D49FB284E027400324BE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D49FA284E027400324BE3 /* AppDelegate.swift */; };
-		591D49FF284E027400324BE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D49FE284E027400324BE3 /* ViewController.swift */; };
 		591D4A04284E027600324BE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 591D4A03284E027600324BE3 /* Assets.xcassets */; };
 		591D4A07284E027600324BE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 591D4A05284E027600324BE3 /* LaunchScreen.storyboard */; };
+		591D4A13284E112100324BE3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A12284E112100324BE3 /* MainTabBarController.swift */; };
+		591D4A17284E118F00324BE3 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A16284E118F00324BE3 /* PhotosCollectionViewController.swift */; };
+		591D4A19284E11DB00324BE3 /* LikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A18284E11DB00324BE3 /* LikedListViewController.swift */; };
+		591D4A1B284E1AFC00324BE3 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A1A284E1AFC00324BE3 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		591D49F7284E027400324BE3 /* PhotoViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		591D49FA284E027400324BE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		591D49FE284E027400324BE3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		591D4A03284E027600324BE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		591D4A06284E027600324BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		591D4A08284E027600324BE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		591D4A12284E112100324BE3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		591D4A16284E118F00324BE3 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		591D4A18284E11DB00324BE3 /* LikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewController.swift; sourceTree = "<group>"; };
+		591D4A1A284E1AFC00324BE3 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +58,48 @@
 		591D49F9284E027400324BE3 /* PhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
-				591D49FA284E027400324BE3 /* AppDelegate.swift */,
-				591D49FE284E027400324BE3 /* ViewController.swift */,
-				591D4A03284E027600324BE3 /* Assets.xcassets */,
-				591D4A05284E027600324BE3 /* LaunchScreen.storyboard */,
-				591D4A08284E027600324BE3 /* Info.plist */,
+				591D4A0F284E10EA00324BE3 /* ViewControllers */,
+				591D4A10284E10F800324BE3 /* Resources */,
+				591D4A0E284E10C400324BE3 /* SupportFiles */,
+				591D4A11284E110800324BE3 /* Storyboards */,
 			);
 			path = PhotoViewer;
+			sourceTree = "<group>";
+		};
+		591D4A0E284E10C400324BE3 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				591D49FA284E027400324BE3 /* AppDelegate.swift */,
+				591D4A08284E027600324BE3 /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		591D4A0F284E10EA00324BE3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				591D4A12284E112100324BE3 /* MainTabBarController.swift */,
+				591D4A16284E118F00324BE3 /* PhotosCollectionViewController.swift */,
+				591D4A18284E11DB00324BE3 /* LikedListViewController.swift */,
+				591D4A1A284E1AFC00324BE3 /* DetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		591D4A10284E10F800324BE3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				591D4A03284E027600324BE3 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		591D4A11284E110800324BE3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				591D4A05284E027600324BE3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +172,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				591D49FF284E027400324BE3 /* ViewController.swift in Sources */,
 				591D49FB284E027400324BE3 /* AppDelegate.swift in Sources */,
+				591D4A13284E112100324BE3 /* MainTabBarController.swift in Sources */,
+				591D4A19284E11DB00324BE3 /* LikedListViewController.swift in Sources */,
+				591D4A17284E118F00324BE3 /* PhotosCollectionViewController.swift in Sources */,
+				591D4A1B284E1AFC00324BE3 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +319,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4XK5S24922;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PhotoViewer/Info.plist;
+				INFOPLIST_FILE = PhotoViewer/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -303,7 +347,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4XK5S24922;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PhotoViewer/Info.plist;
+				INFOPLIST_FILE = PhotoViewer/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
