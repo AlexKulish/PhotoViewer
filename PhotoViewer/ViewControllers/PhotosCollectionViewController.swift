@@ -9,6 +9,8 @@ import UIKit
 
 class PhotosCollectionViewController: UIViewController {
     
+    private var photos = [Photo]()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -24,6 +26,7 @@ class PhotosCollectionViewController: UIViewController {
         view.backgroundColor = .white
         setupSearchBar()
         view.addSubview(collectionView)
+        getRandomPhotos()
     }
     
     private func setupSearchBar() {
@@ -55,6 +58,21 @@ class PhotosCollectionViewController: UIViewController {
         return layout
     }
     
+    private func getRandomPhotos() {
+        
+        NetworkManager.shared.fetchRandomPhotos(count: 5) { [weak self] result in
+            switch result {
+            case .success(let photos):
+                self?.photos = photos
+                self?.collectionView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
@@ -63,7 +81,7 @@ extension PhotosCollectionViewController: UICollectionViewDelegate, UICollection
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        15
+        photos.count
     }
     
     
