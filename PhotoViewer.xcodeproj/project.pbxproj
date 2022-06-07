@@ -19,6 +19,7 @@
 		591D4A28284E436A00324BE3 /* APIUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A27284E436A00324BE3 /* APIUrls.swift */; };
 		591D4A2B284E4B1E00324BE3 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A2A284E4B1E00324BE3 /* PhotoModel.swift */; };
 		591D4A2E284EA79600324BE3 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A2D284EA79600324BE3 /* PhotosCell.swift */; };
+		591D4A33284F6B2E00324BE3 /* LikedPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A32284F6B2E00324BE3 /* LikedPhotosCell.swift */; };
 		C02B82D7C2D3B6324DD7A26B /* Pods_PhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271C94A87F8DF5696A5D2A95 /* Pods_PhotoViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		591D4A27284E436A00324BE3 /* APIUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrls.swift; sourceTree = "<group>"; };
 		591D4A2A284E4B1E00324BE3 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		591D4A2D284EA79600324BE3 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
+		591D4A32284F6B2E00324BE3 /* LikedPhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPhotosCell.swift; sourceTree = "<group>"; };
 		AE68DC497A98E59B90607460 /* Pods-PhotoViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewer.debug.xcconfig"; path = "Target Support Files/Pods-PhotoViewer/Pods-PhotoViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				591D4A2D284EA79600324BE3 /* PhotosCell.swift */,
+				591D4A32284F6B2E00324BE3 /* LikedPhotosCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			files = (
 				591D4A1E284E358000324BE3 /* NetworkManager.swift in Sources */,
 				591D4A26284E433300324BE3 /* APIConstant.swift in Sources */,
+				591D4A33284F6B2E00324BE3 /* LikedPhotosCell.swift in Sources */,
 				591D49FB284E027400324BE3 /* AppDelegate.swift in Sources */,
 				591D4A13284E112100324BE3 /* MainTabBarController.swift in Sources */,
 				591D4A19284E11DB00324BE3 /* LikedListViewController.swift in Sources */,

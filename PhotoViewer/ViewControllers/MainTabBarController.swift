@@ -9,13 +9,15 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    private var photos = [Photo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBar.tintColor = .purple
         viewControllers = [
-        setupNavigationController(rootViewController: PhotosCollectionViewController(), title: "Photos", image: "camera"),
-        setupNavigationController(rootViewController: LikedListViewController(), title: "Liked", image: "heart")
+        setupNavigationController(rootViewController: PhotosCollectionViewController(photos: photos), title: "Photos", image: "camera"),
+        setupNavigationController(rootViewController: LikedListViewController(photos: photos), title: "Liked", image: "heart")
         ]
         
     }

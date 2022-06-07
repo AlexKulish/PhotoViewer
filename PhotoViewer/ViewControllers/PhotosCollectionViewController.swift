@@ -9,7 +9,7 @@ import UIKit
 
 class PhotosCollectionViewController: UIViewController {
     
-    private var photos = [Photo]()
+    private var photos: [Photo]!
     private var timer: Timer?
     private let customRefreshControl = UIRefreshControl()
     
@@ -22,6 +22,15 @@ class PhotosCollectionViewController: UIViewController {
         collectionView.dataSource = self
         return collectionView
     }()
+    
+    init(photos: [Photo]) {
+        super.init(nibName: nil, bundle: nil)
+        self.photos = photos
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +60,6 @@ class PhotosCollectionViewController: UIViewController {
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-//            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
             group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0)
             
             let section = NSCollectionLayoutSection(group: group)

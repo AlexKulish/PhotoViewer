@@ -57,11 +57,12 @@ class DetailsViewController: UIViewController {
     }()
     
     private lazy var likeButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         button.layer.cornerRadius = 15
-        button.backgroundColor = .red
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = (photo?.isFavoritePhoto ?? false) ? .lightGray : .red
         view.addSubview(button)
         return button
     }()
@@ -118,10 +119,44 @@ class DetailsViewController: UIViewController {
         placeLabel.text = "Location: \(photo?.user.location ?? "Unknown location")"
         downloadCountLabel.text = "Likes by \(photo?.likes ?? 0) peoples"
         
+        buttonTitleToggle()
+        
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Cool!", message: photo?.isFavoritePhoto ?? false ? "Photo is liked" : "Photo is unliked", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
+    func buttonTitleToggle() {
+        let liked = photo?.isFavoritePhoto ?? false
+        let likeButtonText = liked ? "Unlike" : "Like"
+        likeButton.setTitle(likeButtonText, for: .normal)
+        DispatchQueue.main.async { [weak self] in
+            if liked {
+                UIView.animate(withDuration: 1) {
+                    self?.likeButton.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.2, alpha: 1.0)
+                }
+                UIView.animate(withDuration: 0.5) {
+                   self?.likeButton.backgroundColor = UIColor.lightGray
+                }
+            } else {
+                UIView.animate(withDuration: 1) {
+                  self?.likeButton.backgroundColor = UIColor.red
+                }
+            }
+        }
     }
     
     @objc private func likeButtonTapped() {
-        
+        if ((photo?.isFavoritePhoto) != nil) {
+            
+        }
+        photo?.isFavoritePhoto.toggle()
+        buttonTitleToggle()
+        showAlert()
     }
     
 }
