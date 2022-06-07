@@ -60,7 +60,6 @@
 				AE68DC497A98E59B90607460 /* Pods-PhotoViewer.debug.xcconfig */,
 				58F71DC951DB8532CEEB1119 /* Pods-PhotoViewer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

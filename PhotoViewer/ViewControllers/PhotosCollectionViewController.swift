@@ -107,6 +107,7 @@ extension PhotosCollectionViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailsViewController()
+        vc.photo = photos[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)
     }
     
