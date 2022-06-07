@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
-    var photo: Photo?
+    var photo: Photo!
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -130,7 +130,7 @@ class DetailsViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    func buttonTitleToggle() {
+    private func buttonTitleToggle() {
         let liked = photo?.isFavoritePhoto ?? false
         let likeButtonText = liked ? "Unlike" : "Like"
         likeButton.setTitle(likeButtonText, for: .normal)
@@ -151,9 +151,8 @@ class DetailsViewController: UIViewController {
     }
     
     @objc private func likeButtonTapped() {
-        if ((photo?.isFavoritePhoto) != nil) {
-            
-        }
+        
+        StorageManager.shared.setSettingsButtons(photoString: photo)
         photo?.isFavoritePhoto.toggle()
         buttonTitleToggle()
         showAlert()

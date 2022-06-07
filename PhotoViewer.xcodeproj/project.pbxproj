@@ -20,6 +20,8 @@
 		591D4A2B284E4B1E00324BE3 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A2A284E4B1E00324BE3 /* PhotoModel.swift */; };
 		591D4A2E284EA79600324BE3 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A2D284EA79600324BE3 /* PhotosCell.swift */; };
 		591D4A33284F6B2E00324BE3 /* LikedPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A32284F6B2E00324BE3 /* LikedPhotosCell.swift */; };
+		591D4A35284F9B6E00324BE3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A34284F9B6E00324BE3 /* StorageManager.swift */; };
+		591D4A37284F9C2600324BE3 /* UserDefaults + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D4A36284F9C2600324BE3 /* UserDefaults + Extension.swift */; };
 		C02B82D7C2D3B6324DD7A26B /* Pods_PhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271C94A87F8DF5696A5D2A95 /* Pods_PhotoViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		591D4A2A284E4B1E00324BE3 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		591D4A2D284EA79600324BE3 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
 		591D4A32284F6B2E00324BE3 /* LikedPhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPhotosCell.swift; sourceTree = "<group>"; };
+		591D4A34284F9B6E00324BE3 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		591D4A36284F9C2600324BE3 /* UserDefaults + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults + Extension.swift"; sourceTree = "<group>"; };
 		AE68DC497A98E59B90607460 /* Pods-PhotoViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewer.debug.xcconfig"; path = "Target Support Files/Pods-PhotoViewer/Pods-PhotoViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,11 +90,11 @@
 		591D49F9284E027400324BE3 /* PhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
+				591D4A0F284E10EA00324BE3 /* ViewControllers */,
 				591D4A2C284EA77300324BE3 /* Views */,
 				591D4A29284E4A0700324BE3 /* Models */,
 				591D4A24284E431100324BE3 /* API */,
 				591D4A1C284E356E00324BE3 /* Services */,
-				591D4A0F284E10EA00324BE3 /* ViewControllers */,
 				591D4A10284E10F800324BE3 /* Resources */,
 				591D4A0E284E10C400324BE3 /* SupportFiles */,
 				591D4A11284E110800324BE3 /* Storyboards */,
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				591D4A1D284E358000324BE3 /* NetworkManager.swift */,
+				591D4A34284F9B6E00324BE3 /* StorageManager.swift */,
+				591D4A36284F9C2600324BE3 /* UserDefaults + Extension.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -293,7 +299,9 @@
 				591D4A1E284E358000324BE3 /* NetworkManager.swift in Sources */,
 				591D4A26284E433300324BE3 /* APIConstant.swift in Sources */,
 				591D4A33284F6B2E00324BE3 /* LikedPhotosCell.swift in Sources */,
+				591D4A35284F9B6E00324BE3 /* StorageManager.swift in Sources */,
 				591D49FB284E027400324BE3 /* AppDelegate.swift in Sources */,
+				591D4A37284F9C2600324BE3 /* UserDefaults + Extension.swift in Sources */,
 				591D4A13284E112100324BE3 /* MainTabBarController.swift in Sources */,
 				591D4A19284E11DB00324BE3 /* LikedListViewController.swift in Sources */,
 				591D4A28284E436A00324BE3 /* APIUrls.swift in Sources */,
