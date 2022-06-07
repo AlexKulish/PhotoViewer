@@ -10,12 +10,14 @@ import UIKit
 class PhotosCollectionViewController: UIViewController {
     
     private var photos = [Photo]()
+    private var timer: Timer?
+    private let customRefreshControl = UIRefreshControl()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "photoCell")
+        collectionView.register(PhotosCell.self, forCellWithReuseIdentifier: "photoCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -27,6 +29,7 @@ class PhotosCollectionViewController: UIViewController {
         setupSearchBar()
         view.addSubview(collectionView)
         getRandomPhotos()
+        
     }
     
     private func setupSearchBar() {
@@ -44,9 +47,11 @@ class PhotosCollectionViewController: UIViewController {
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
             
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(84))
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+//            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
             group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0)
             
             let section = NSCollectionLayoutSection(group: group)
@@ -59,8 +64,7 @@ class PhotosCollectionViewController: UIViewController {
     }
     
     private func getRandomPhotos() {
-        
-        NetworkManager.shared.fetchRandomPhotos(count: 5) { [weak self] result in
+        NetworkManager.shared.fetchRandomPhotos(count: 50) { [weak self] result in
             switch result {
             case .success(let photos):
                 self?.photos = photos
@@ -69,8 +73,17 @@ class PhotosCollectionViewController: UIViewController {
                 print(error)
             }
         }
-        
-        
+    }
+    
+    private func refreshControl() {
+        customRefreshControl.addTarget(self, action: #selector(refreshPhotos), for: .valueChanged)
+    }
+    
+    @objc private func refreshPhotos() {
+        collectionView.refreshControl = customRefreshControl
+        photos = []
+        getRandomPhotos()
+        collectionView.reloadData()
     }
     
 }
@@ -87,8 +100,8 @@ extension PhotosCollectionViewController: UICollectionViewDelegate, UICollection
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotosCell else { return UICollectionViewCell() }
+        cell.configure(with: photos[indexPath.item])
         return cell
     }
     
@@ -105,7 +118,20 @@ extension PhotosCollectionViewController: UICollectionViewDelegate, UICollection
 extension PhotosCollectionViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            NetworkManager.shared.searchPhotos(count: 50, searchTerm: searchText) { [weak self] result in
+                print(searchText)
+                switch result {
+                case .success(let searchResult):
+                    guard let searchResult = searchResult else { return }
+                    self?.photos = searchResult.results
+                    self?.collectionView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        })
     }
     
 }
